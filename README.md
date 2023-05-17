@@ -67,9 +67,6 @@ export CGO_CFLAGS_ALLOW="-O -D__BLST_PORTABLE__"
 
 ## Executables
 
-The bsc project comes with several wrappers/executables found in the `cmd`
-directory.
-
 |  Command   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | :--------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`geth`** | Main Miami Network client binary. It is the entry point into the 
@@ -208,10 +205,10 @@ APIs!**
 
 ## License
 
-The bsc library (i.e. all code outside of the `cmd` directory) is licensed under the
+The Miami library (i.e. all code outside of the `cmd` directory) is licensed under the
 [GNU Lesser General Public License v3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html),
 also included in our repository in the `COPYING.LESSER` file.
 
-The bsc binaries (i.e. all code inside of the `cmd` directory) is licensed under the
+The Miami binaries (i.e. all code inside of the `cmd` directory) is licensed under the
 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html), also
 included in our repository in the `COPYING` file.
