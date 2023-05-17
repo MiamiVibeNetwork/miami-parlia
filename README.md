@@ -28,6 +28,63 @@ Kempelen Consensus Engine has 4 main parts:
  -	Kempelen Nodes
 	 -	Open AI nodes configured specifically to receive and cluster transaction data into types of possible incoming attacks to the network security (Sybil, DDoS, etc). Users can create and deploy their own AI implementations to detect these attacks, and receive rewards.
 
+
+## Contributions / Solutions
+
+**Problem 1: Scalability and Reliability**
+
+Blockchain technology inherently struggles to accommodate a high volume of simultaneous transactions and users. Each transaction needs to be verified and recorded by all validators in the network, leading to slow, expensive, and unreliable transactions.
+
+  
+
+**Solution 1: Proof of Trust and Stake (PoTS) Pools**
+
+Miami Network introduces PoTS, where validators who have greater trust and stake in the network possess increased voting power. This structure allows the network to handle a higher volume of transactions and users without compromising security or performance. Each validator's trust scores are publicly visible and verifiable, which maintains network transparency.
+
+  
+
+Furthermore, the Kempelen consensus engine (PoSA-K), an upgrade over the existing Parlia consensus engine used by the BNB chain, is implemented. By maintaining the lightweight, common-trust based staked authority proof validating consensus, it addresses the issues that arise from human-decided authority assignment. This distributed, intelligent authority assignment process eliminates most of the human involvement in maintaining the chain.
+
+  
+
+**Problem 2: Security**
+
+Blockchain technology is susceptible to attacks from malicious actors, which can compromise the integrity of the network and result in the confirmation and recording of false transactions.
+
+  
+
+**Solution 2: Community-Driven Kempelen AI**
+
+Miami Network implements Kempelen AI nodes, community-operated nodes designed to detect anomalies or attacks on validators, based on transactions sent by the PoTS pool. This approach identifies and tracks malicious transactions on chain, enhancing the network's security and reliability.
+
+  
+
+Moreover, the community can implement their own algorithms, strengthening network security by rapidly detecting and neutralizing threats. The routing between nodes for optimization ensures that transactions are batched by type onto each block and are pushed into the highest scored nodes. Community members can even deploy their own Kempelen nodes and earn a percentage of the gas fee used in each transaction they process, which not only increases security but also incentivizes individuals to develop optimized algorithms that can process more transactions.
+
+  
+
+**Problem 3: Uncertainties, Compliance, and Governance Challenges**
+
+Blockchain technology, especially those operating under Proof of Authority (PoA) consensus, functions with a central authority or control. This can create uncertainties, compliance issues, and governance challenges for users and developers.
+
+  
+
+**Solution 3: Proof of Stake Authority (PoSA)**
+
+Miami Network introduces PoSA, where the main validator set comprises 34 validators, with 21 being randomly selected after each period. This design eliminates the need for a central authority to manage messages from Kempelen Pools, which identify potential malicious activity among PoTS validators.
+
+  
+
+The use of Hamiltonian Statistical Zero Knowledge for automated authority assignment maintains the blockchain state as a continuous Hamiltonian graph. Depending on the authority pool a prospector is trying to join, two separate queries are formed. Either the prospector will need to prove that it knows the isomorphism between two matrices by demonstration, or it will need to provide the number of vertices of a specific matrix. If a prospector can provide a passing answer, it is granted signing authority over a fixed number of blocks, then this process is repeated.
+
+  
+
+By promoting such network decentralization, governance challenges are mitigated. Furthermore, by providing equal opportunities for all validators to participate and earn rewards, PoSA fosters network fairness.
+
+  
+
+Note: The Testnet is running on Clique Consensus.  Mainnet development will reach towards full Parlia + PoTS + Kempelen.
+
 ## Native Token
 
 VIBE will run on Miami Network in the same way as ETH runs on Ethereum so that it remains as `native token` for Miami Network. This means,
