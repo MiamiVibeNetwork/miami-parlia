@@ -1,63 +1,44 @@
-## BNB Smart Chain
+## Miami Network
+Miami Network is an EVM blockchain that combines blockchain technology with artificial intelligence to create a new multi-pool consensus engine called Kempelen Consensus Engine. This engine features a distributed, intelligent block validator assignment process that eliminates human involvement in the upkeep and security of the chain while boosting scalability. It also enables a routing protocol that fetches the node that suits the user’s transaction patterns, allowing for optimized processing on the validator machines.
 
-The goal of BNB Smart Chain is to bring programmability and interoperability to BNB Beacon Chain. In order to embrace the existing popular community and advanced technology, it will bring huge benefits by staying compatible with all the existing smart contracts on Ethereum and Ethereum tooling. And to achieve that, the easiest solution is to develop based on go-ethereum fork, as we respect the great work of Ethereum very much.
+Miami Network aims to improve upon Parlia by using deep learning and neural networks to automate and enhance the authority assignment process. Miami Network also implements a routing protocol that matches the user’s transaction patterns with the best node for faster and more efficient processing.
 
-BNB Smart Chain starts its development based on go-ethereum fork. So you may see many toolings, binaries and also docs are based on Ethereum ones, such as the name “geth”.
+Miami Network's skeleton pool uses parlia in order to establish a secure consensus base, ensuring network longevity.
 
-[![API Reference](
-https://camo.githubusercontent.com/915b7be44ada53c290eb157634330494ebe3e30a/68747470733a2f2f676f646f632e6f72672f6769746875622e636f6d2f676f6c616e672f6764646f3f7374617475732e737667
-)](https://pkg.go.dev/github.com/ethereum/go-ethereum?tab=doc)
-[![Discord](https://img.shields.io/badge/discord-join%20chat-blue.svg)](https://discord.gg/z2VpC455eU)
+![](miami_overview.jpeg)
 
-But from that baseline of EVM compatible, BNB Smart Chain introduces  a system of 21 validators with Proof of Staked Authority (PoSA) consensus that can support short block time and lower fees. The most bonded validator candidates of staking will become validators and produce blocks. The double-sign detection and other slashing logic guarantee security, stability, and chain finality.
+## What is the Kempelen Consensus Engine?
 
-Cross-chain transfer and other communication are possible due to native support of interoperability. Relayers and on-chain contracts are developed to support that. BNB Beacon Chain DEX remains a liquid venue of the exchange of assets on both chains. This dual-chain architecture will be ideal for users to take advantage of the fast trading on one side and build their decentralized apps on the other side. **The BNB Smart Chain** will be:
+Kempelen Consensus Engine has 4 main parts:
 
-- **A self-sovereign blockchain**: Provides security and safety with elected validators.
-- **EVM-compatible**: Supports all the existing Ethereum tooling along with faster finality and cheaper transaction fees.
-- **Interoperable**: Comes with efficient native dual chain communication; Optimized for scaling high-performance dApps that require fast and smooth user experience.
-- **Distributed with on-chain governance**: Proof of Staked Authority brings in decentralization and community participants. As the native token, BNB will serve as both the gas of smart contract execution and tokens for staking.
+ - Multi-Pool Consensus Scheme
+   - Pool #1: PoTS
+	   -   A pool of validators with voting power weighted based on their trust score and staked amount. Optimized for high scalability.
+	   Transactions they receive are routed to the Kempelen AI pool using
+	   KemP2P.
+   - Pool #2: Kempelen AI
+	   - A pool of Open AI nodes that classifies anomalies on transactions sent by PoTS pool. The classifier results are sent to the PoSA pool
+   along with the transaction data.
+   - Pool #3: PoSA
+	   - The skeleton validator set for Miami Network. Out of 34 validators, 21 are picked after each epoch. Reconfiguration over Parlia consensus algorithm.
 
-More details in [White Paper](https://www.bnbchain.org/en#smartChain).
-
-## Key features
-
-### Proof of Staked Authority 
-Although Proof-of-Work (PoW) has been approved as a practical mechanism to implement a decentralized network, it is not friendly to the environment and also requires a large size of participants to maintain the security. 
-
-Proof-of-Authority(PoA) provides some defense to 51% attack, with improved efficiency and tolerance to certain levels of Byzantine players (malicious or hacked). 
-Meanwhile, the PoA protocol is most criticized for being not as decentralized as PoW, as the validators, i.e. the nodes that take turns to produce blocks, have all the authorities and are prone to corruption and security attacks.
-
-Other blockchains, such as EOS and Cosmos both, introduce different types of Deputy Proof of Stake (DPoS) to allow the token holders to vote and elect the validator set. It increases the decentralization and favors community governance. 
-
-To combine DPoS and PoA for consensus, BNB Smart Chain implement a novel consensus engine called Parlia that:
-
-1. Blocks are produced by a limited set of validators.
-2. Validators take turns to produce blocks in a PoA manner, similar to Ethereum's Clique consensus engine.
-3. Validator set are elected in and out based on a staking based governance on BNB Beacon Chain.
-4. The validator set change is relayed via a cross-chain communication mechanism.
-5. Parlia consensus engine will interact with a set of [system contracts](https://docs.bnbchain.org/docs/learn/system-contract) to achieve liveness slash, revenue distributing and validator set renewing func.
-
+ -   KemP2P
+	 - Communication and routing protocol built on top of EVM’s DevP2P, forming the low level messaging network between validator pools.
  
-### Light Client of BNB Beacon Chain
-
-To achieve the cross-chain communication from BNB Beacon Chain to BNB Smart Chain, need introduce a on-chain light client verification algorithm.
-It contains two parts:
-
-1. [Stateless Precompiled contracts](https://github.com/bnb-chain/bsc/blob/master/core/vm/contracts_lightclient.go) to do tendermint header verification and Merkle Proof verification.
-2. [Stateful solidity contracts](https://github.com/bnb-chain/bsc-genesis-contract/blob/master/contracts/TendermintLightClient.sol) to store validator set and trusted appHash.  
+ -	Kempelen Nodes
+	 -	Open AI nodes configured specifically to receive and cluster transaction data into types of possible incoming attacks to the network security (Sybil, DDoS, etc). Users can create and deploy their own AI implementations to detect these attacks, and receive rewards.
 
 ## Native Token
 
-BNB will run on BNB Smart Chain in the same way as ETH runs on Ethereum so that it remains as `native token` for BSC. This means,
-BNB will be used to:
+VIBE will run on Miami Network in the same way as ETH runs on Ethereum so that it remains as `native token` for Miami Network. This means,
+VIBE will be used to:
 
-1. pay `gas` to deploy or invoke Smart Contract on BSC
-2. perform cross-chain operations, such as transfer token assets across BNB Smart Chain and BNB Beacon Chain.
+1. pay `gas` to deploy or invoke Smart Contract on Miami Network
+2. perform cross-chain operations, such as transfer token assets across chains.
 
 ## Building the source
 
-Many of the below are the same as or similar to go-ethereum.
+Many of the below are the same as or similar to go-ethereum and bnb-chain.
 
 For prerequisites and detailed build instructions please read the [Installation Instructions](https://geth.ethereum.org/docs/getting-started/installing-geth).
 
@@ -91,7 +72,8 @@ directory.
 
 |  Command   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | :--------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`geth`** | Main BNB Smart Chain client binary. It is the entry point into the BSC network (main-, test- or private net), capable of running as a full node (default), archive node (retaining all historical state) or a light node (retrieving data live). It has the same and more RPC and other interface as go-ethereum and can be used by other processes as a gateway into the BSC network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `geth --help` and the [CLI page](https://geth.ethereum.org/docs/interface/command-line-options) for command line options. |
+| **`geth`** | Main BNB Smart Chain client binary. It is the entry point into the 
+network (main-, test- or private net), capable of running as a full node (default), archive node (retaining all historical state) or a light node (retrieving data live). It has the same and more RPC and other interface as go-ethereum and can be used by other processes as a gateway into the BSC network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `geth --help` and the [CLI page](https://geth.ethereum.org/docs/interface/command-line-options) for command line options. |
 |   `clef`   | Stand-alone signing tool, which can be used as a backend signer for `geth`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |  `devp2p`  | Utilities to interact with nodes on the networking layer, without running a full blockchain.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |  `abigen`  | Source code generator to convert Ethereum contract definitions into easy to use, compile-time type-safe Go packages. It operates on plain [Ethereum contract ABIs](https://docs.soliditylang.org/en/develop/abi-spec.html) with expanded functionality if the contract bytecode is also available. However, it also accepts Solidity source files, making development much more streamlined. Please see our [Native DApps](https://geth.ethereum.org/docs/dapp/native-bindings) page for details.                                                                                               |
